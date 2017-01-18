@@ -18,7 +18,14 @@ class Barkdog::Exporter
   end
 
   def export
-    monitors = @dog.get_all_monitors[1]
+    opts = {}
+    if @options[:monitor_tags]
+      if @options[:monitor_tags].respond_to?(:split)
+        @options[:monitor_tags] = @options[:monitor_tags].split(",")
+      end
+      opts[:monitor_tags] = @options[:monitor_tags]
+    end
+    monitors = @dog.get_all_monitors(opts)[1]
     normalize(monitors)
   end
 
@@ -48,4 +55,3 @@ class Barkdog::Exporter
     monitor_by_name
   end
 end
-

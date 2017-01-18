@@ -23,7 +23,8 @@ options = {
   :ignore_silenced => false,
   :color           => true,
   :debug           => false,
-  :datadog_timeout => nil
+  :datadog_timeout => nil,
+  :monitor_tags    => ["owner:ops"]
 }
 
 ARGV.options do |opt|
